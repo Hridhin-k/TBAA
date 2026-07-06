@@ -1,0 +1,16 @@
+{
+  "name": "The Better Academy",
+  "short_name": "Better Academy",
+  "description": "Premium advertising academy from The Better Agency",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f3ee",
+  "theme_color": "#f5f3ee",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
