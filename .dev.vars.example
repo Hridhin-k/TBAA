@@ -1,0 +1,7 @@
+# Copy to .dev.vars for local Cloudflare preview (npm run preview)
+# Do not commit .dev.vars — it is gitignored
+
+NEXTJS_ENV=development
+
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_GOOGLE_SCRIPT_URL=
