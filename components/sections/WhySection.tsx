@@ -1,7 +1,7 @@
 import { FadeIn } from "@/components/motion/Motion";
 import { EditorialImage } from "@/components/ui/EditorialImage";
-import { Heading } from "@/components/ui/Heading";
 import { Section } from "@/components/ui/Section";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { siteMedia } from "@/lib/data/media";
 
 const differentiators = [
@@ -37,68 +37,69 @@ const differentiators = [
   },
 ];
 
+const stats = [
+  { label: "Applications reviewed personally", value: "100%" },
+  { label: "Cohort model", value: "Small & focused" },
+  { label: "Learning format", value: "Studio + live briefs" },
+];
+
 export function WhySection() {
   return (
     <Section id="why" ariaLabel="Why Better Academy" background="cream">
-      <div className="editorial-grid gap-y-10 mb-10 md:mb-14">
-        <div className="col-span-12 lg:col-span-6">
-          <FadeIn>
-            <p className="text-xs uppercase tracking-[0.25em] text-stone mb-4">
-              Why Better Academy
-            </p>
-            <Heading as="h2" size="xl" className="max-w-4xl">
-              Not another course.
-              <br />
-              <span className="text-stone">A creative apprenticeship.</span>
-            </Heading>
-          </FadeIn>
-        </div>
-        <div className="col-span-12 lg:col-span-5 lg:col-start-8">
-          <FadeIn delay={0.1}>
-            <EditorialImage
-              src={siteMedia.why.collaboration.src}
-              alt={siteMedia.why.collaboration.alt}
-              aspectRatio="portrait"
-              sizes="(max-width: 768px) 100vw, 42vw"
-            />
-          </FadeIn>
-        </div>
-      </div>
+      <SectionHeader
+        index="04"
+        eyebrow="Why Better Academy"
+        title={
+          <>
+            Not another course.
+            <br />
+            <span className="text-stone">A creative apprenticeship.</span>
+          </>
+        }
+      />
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 mb-10 md:mb-14">
-        {[
-          { label: "Applications reviewed personally", value: "100%" },
-          { label: "Cohort model", value: "Small & focused" },
-          { label: "Learning format", value: "Studio + live briefs" },
-        ].map((item) => (
+      {/* Symmetric proof metrics */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 max-w-5xl mx-auto mb-10 md:mb-12">
+        {stats.map((item) => (
           <div
             key={item.label}
-            className="rounded-xl border border-mist-dark bg-white px-5 py-4"
+            className="rounded-xl border border-mist-dark bg-white px-6 py-6 text-center"
           >
-            <p className="text-[10px] uppercase tracking-[0.2em] text-stone mb-2">
-              {item.label}
-            </p>
-            <p className="font-display text-lg md:text-xl font-semibold tracking-tight text-ink">
+            <p className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-ink mb-2">
               {item.value}
+            </p>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-stone">
+              {item.label}
             </p>
           </div>
         ))}
       </div>
 
-      <div className="editorial-grid gap-y-0">
+      {/* Breather visual */}
+      <FadeIn className="max-w-5xl mx-auto mb-10 md:mb-12">
+        <EditorialImage
+          src={siteMedia.why.collaboration.src}
+          alt={siteMedia.why.collaboration.alt}
+          aspectRatio="cinematic"
+          sizes="(max-width: 768px) 100vw, 56rem"
+        />
+      </FadeIn>
+
+      {/* Numbered differentiator list — consistent rows */}
+      <div className="max-w-5xl mx-auto">
         {differentiators.map((item, index) => (
-          <FadeIn
-            key={item.number}
-            delay={index * 0.06}
-            className="col-span-12 md:col-span-6 lg:col-span-4 border-t border-mist-dark pt-6 pb-8 md:pr-6"
-          >
-            <span className="text-xs tracking-[0.15em] text-stone block mb-4">
-              {item.number}
-            </span>
-            <h3 className="font-display text-xl md:text-2xl font-semibold tracking-tight mb-4">
-              {item.title}
-            </h3>
-            <p className="text-stone leading-relaxed">{item.description}</p>
+          <FadeIn key={item.number} delay={index * 0.06}>
+            <article className="grid grid-cols-[auto_1fr] gap-6 md:gap-10 border-t border-mist-dark py-7 md:py-8">
+              <span className="font-display text-sm font-medium tracking-[0.15em] text-stone pt-1">
+                {item.number}
+              </span>
+              <div className="grid md:grid-cols-[1fr_1.2fr] gap-2 md:gap-8">
+                <h3 className="font-display text-xl md:text-2xl font-semibold tracking-tight text-balance">
+                  {item.title}
+                </h3>
+                <p className="text-stone leading-relaxed">{item.description}</p>
+              </div>
+            </article>
           </FadeIn>
         ))}
       </div>

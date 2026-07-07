@@ -1,9 +1,6 @@
 import { FadeIn } from "@/components/motion/Motion";
-import { Reveal } from "@/components/motion/Motion";
-import { EditorialImage } from "@/components/ui/EditorialImage";
-import { Heading } from "@/components/ui/Heading";
 import { Section } from "@/components/ui/Section";
-import { siteMedia } from "@/lib/data/media";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const problems = [
   {
@@ -35,51 +32,32 @@ const problems = [
 export function ProblemSection() {
   return (
     <Section id="problem" ariaLabel="Industry problem" background="white">
-      <div className="editorial-grid gap-y-12 md:gap-y-16">
-        {/* Headline spans wide — image breaks right */}
-        <div className="col-span-12 lg:col-span-7 lg:col-start-1">
-          <FadeIn>
-            <p className="section-eyebrow mb-5">The Problem</p>
-            <Heading as="h2" size="xl" className="max-w-[14ch]">
-              Advertising education is stuck in the past.
-            </Heading>
+      <SectionHeader
+        index="03"
+        eyebrow="The Problem"
+        title="Advertising education is stuck in the past."
+        lead="The way advertising is taught has drifted far from how it is actually made. Four gaps keep talented people from breaking in."
+      />
+
+      {/* Symmetric 2×2 grid */}
+      <div className="grid sm:grid-cols-2 gap-4 md:gap-5 max-w-5xl mx-auto">
+        {problems.map((problem, index) => (
+          <FadeIn key={problem.title} delay={index * 0.08}>
+            <article className="group h-full grid grid-cols-[auto_1fr] gap-5 md:gap-6 border border-border bg-card p-6 md:p-8 rounded-2xl transition-colors hover:border-foreground/15">
+              <span className="font-display text-4xl md:text-5xl font-semibold tracking-tight text-muted-foreground/30 leading-none pt-1">
+                {problem.number}
+              </span>
+              <div>
+                <h3 className="font-display text-xl md:text-2xl font-semibold tracking-tight mb-3">
+                  {problem.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {problem.description}
+                </p>
+              </div>
+            </article>
           </FadeIn>
-        </div>
-
-        <div className="col-span-12 lg:col-span-5 lg:col-start-8 lg:-mt-24 relative z-10">
-          <Reveal>
-            <EditorialImage
-              src={siteMedia.problem.education.src}
-              alt={siteMedia.problem.education.alt}
-              aspectRatio="portrait"
-              sizes="(max-width: 768px) 100vw, 38vw"
-              className="shadow-[0_24px_80px_-24px_rgba(12,12,12,0.25)]"
-            />
-          </Reveal>
-        </div>
-
-        {/* Staggered problem list — offset column */}
-        <div className="col-span-12 lg:col-span-8 lg:col-start-2">
-          <div className="grid gap-4 md:gap-5">
-            {problems.map((problem, index) => (
-              <FadeIn key={problem.title} delay={index * 0.08}>
-                <article className="group grid grid-cols-[auto_1fr] gap-5 md:gap-8 border border-border bg-card p-6 md:p-8 transition-colors hover:border-foreground/15">
-                  <span className="font-display text-4xl md:text-5xl font-semibold tracking-tight text-muted-foreground/30 leading-none pt-1">
-                    {problem.number}
-                  </span>
-                  <div>
-                    <h3 className="font-display text-xl md:text-2xl font-semibold tracking-tight mb-3">
-                      {problem.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed max-w-xl">
-                      {problem.description}
-                    </p>
-                  </div>
-                </article>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     </Section>
   );

@@ -1,7 +1,7 @@
 import { FadeIn } from "@/components/motion/Motion";
 import { CinematicVideoPlayer } from "@/components/ui/CinematicVideoPlayer";
-import { Heading } from "@/components/ui/Heading";
 import { Section } from "@/components/ui/Section";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { siteMedia } from "@/lib/data/media";
 
 export function ShowreelSection() {
@@ -12,16 +12,15 @@ export function ShowreelSection() {
       background="ink"
       className="!py-0 scroll-mt-16"
       containerClassName="!px-0 !max-w-none"
+      decorated={false}
     >
-      <div className="container-editorial pt-10 md:pt-14 pb-6 md:pb-10">
-        <FadeIn>
-          <p className="text-xs uppercase tracking-[0.25em] text-stone-light mb-4">
-            Showreel
-          </p>
-          <Heading as="h2" size="lg" className="text-white max-w-3xl">
-            See the standard of work we hold ourselves to.
-          </Heading>
-        </FadeIn>
+      <div className="container-editorial pt-12 md:pt-16 pb-8 md:pb-10">
+        <SectionHeader
+          index="01"
+          eyebrow="Showreel"
+          tone="light"
+          title="See the standard of work we hold ourselves to."
+        />
       </div>
 
       <FadeIn>
@@ -34,9 +33,9 @@ export function ShowreelSection() {
         />
       </FadeIn>
 
-      <div className="container-editorial pt-6 md:pt-8 pb-10 md:pb-14">
+      <div className="container-editorial pt-8 md:pt-10 pb-12 md:pb-16">
         <FadeIn delay={0.1}>
-          <p className="text-stone-light max-w-2xl leading-relaxed">
+          <p className="mx-auto max-w-2xl text-center text-stone-light leading-relaxed">
             Behind-the-scenes from real commercial shoots — brand films, hospitality
             campaigns, fitness films, and fashion advertising. This is the craft you
             will learn to deliver inside our academy.

@@ -1,8 +1,8 @@
 import { FadeIn } from "@/components/motion/Motion";
 import { EditorialImage } from "@/components/ui/EditorialImage";
 import { FeatureCard } from "@/components/ui/FeatureCard";
-import { Heading } from "@/components/ui/Heading";
 import { Section } from "@/components/ui/Section";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Timeline } from "@/components/ui/Timeline";
 import { curriculumModules, timelineSteps } from "@/lib/data/content";
 import { siteMedia } from "@/lib/data/media";
@@ -10,45 +10,34 @@ import { siteMedia } from "@/lib/data/media";
 export function ExperienceSection() {
   return (
     <Section id="experience" ariaLabel="Learning experience" background="white">
-      {/* Centered intro — different rhythm from adjacent sections */}
-      <div className="max-w-3xl mx-auto text-center mb-14 md:mb-20">
-        <FadeIn>
-          <p className="section-eyebrow mb-5">Learning Experience</p>
-          <Heading as="h2" size="xl" className="mb-6">
-            Six months of immersion in the craft of advertising.
-          </Heading>
-          <p className="text-muted-foreground leading-relaxed text-balance">
-            A structured journey from foundations to finished campaigns — designed
-            to mirror how great work actually gets made.
-          </p>
-        </FadeIn>
-      </div>
+      <SectionHeader
+        index="05"
+        eyebrow="Learning Experience"
+        title="Six months of immersion in the craft of advertising."
+        lead="A structured journey from foundations to finished campaigns — designed to mirror how great work actually gets made."
+      />
 
-      {/* Overlapping image composition */}
-      <div className="editorial-grid mb-16 md:mb-24">
-        <FadeIn className="col-span-12 md:col-span-9 md:col-start-1 relative z-10">
+      {/* Symmetric image pair */}
+      <div className="grid md:grid-cols-2 gap-4 md:gap-5 max-w-5xl mx-auto mb-12 md:mb-16">
+        <FadeIn>
           <EditorialImage
             src={siteMedia.experience.filmSet.src}
             alt={siteMedia.experience.filmSet.alt}
-            aspectRatio="cinematic"
-            sizes="(max-width: 768px) 100vw, 72vw"
+            aspectRatio="landscape"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </FadeIn>
-        <FadeIn
-          delay={0.12}
-          className="col-span-10 md:col-span-4 md:col-start-9 -mt-12 md:-mt-20 relative z-20"
-        >
+        <FadeIn delay={0.1}>
           <EditorialImage
             src={siteMedia.experience.workshop.src}
             alt={siteMedia.experience.workshop.alt}
-            aspectRatio="square"
-            sizes="(max-width: 768px) 80vw, 30vw"
-            className="shadow-[0_24px_80px_-24px_rgba(12,12,12,0.2)]"
+            aspectRatio="landscape"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </FadeIn>
       </div>
 
-      <div className="editorial-grid gap-y-12 lg:gap-x-8">
+      <div className="editorial-grid gap-y-12 lg:gap-x-8 max-w-5xl mx-auto">
         <div className="col-span-12 lg:col-span-4 lg:sticky lg:top-28 lg:self-start">
           <FadeIn>
             <p className="section-eyebrow mb-4">Timeline</p>

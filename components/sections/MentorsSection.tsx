@@ -1,28 +1,21 @@
 import { FadeIn } from "@/components/motion/Motion";
-import { Heading } from "@/components/ui/Heading";
 import { Section } from "@/components/ui/Section";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { mentors } from "@/lib/data/content";
 import Image from "next/image";
 
 export function MentorsSection() {
   return (
     <Section id="mentors" ariaLabel="Mentors" background="cream">
-      <FadeIn>
-        <p className="text-xs uppercase tracking-[0.25em] text-stone mb-4">
-          Mentors
-        </p>
-        <Heading as="h2" size="xl" className="max-w-3xl mb-10 md:mb-14">
-          Learn from people who still make the work.
-        </Heading>
-      </FadeIn>
+      <SectionHeader
+        index="06"
+        eyebrow="Mentors"
+        title="Learn from people who still make the work."
+      />
 
-      <div className="editorial-grid gap-y-10 md:gap-y-0">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5 max-w-5xl mx-auto">
         {mentors.map((mentor, index) => (
-          <FadeIn
-            key={mentor.id}
-            delay={index * 0.08}
-            className="col-span-12 md:col-span-6 lg:col-span-3 group"
-          >
+          <FadeIn key={mentor.id} delay={index * 0.08} className="group">
             <article>
               <div className="relative mb-4 aspect-[4/5] overflow-hidden rounded-2xl bg-mist">
                 <Image

@@ -52,7 +52,7 @@ export function HeroSection() {
         className="hidden xl:block absolute top-28 right-[clamp(1.25rem,3vw,2.5rem)] font-display text-[11px] tracking-[0.3em] text-stone/50"
         aria-hidden="true"
       >
-        01
+        00
       </div>
 
       <div className="container-editorial min-h-[100dvh] grid lg:grid-cols-12 lg:gap-x-8">
@@ -160,10 +160,9 @@ export function HeroSection() {
           </motion.div>
         </div>
 
-        {/* ——— Visual column — broken grid, overlapping caption ——— */}
+        {/* ——— Visual column ——— */}
         <div className="lg:col-span-7 xl:col-span-7 relative lg:min-h-[100dvh] flex flex-col justify-center pb-8 lg:pb-0 lg:py-16">
           <div className="relative w-full">
-            {/* Main image frame — inset on desktop for editorial breathing room */}
             <div className="relative aspect-[4/5] sm:aspect-[16/11] lg:aspect-auto lg:min-h-[72vh] xl:min-h-[78vh] overflow-hidden rounded-2xl lg:rounded-3xl bg-mist">
               <Image
                 src={siteMedia.hero.primary}
@@ -179,27 +178,6 @@ export function HeroSection() {
                 aria-hidden="true"
               />
             </div>
-
-            {/* Floating caption card — overlaps content boundary on desktop */}
-            <motion.div
-              custom={0.5}
-              variants={fadeUp}
-              {...motionProps}
-              className="absolute -bottom-6 left-4 right-4 sm:left-6 sm:right-6 lg:-left-12 lg:bottom-10 lg:right-auto lg:max-w-[280px] border border-border bg-card/95 backdrop-blur-sm p-5 md:p-6 shadow-[0_20px_60px_-20px_rgba(12,12,12,0.2)]"
-            >
-              <p className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground mb-2">
-                Featured Work
-              </p>
-              <p className="font-display text-lg md:text-xl font-semibold tracking-tight leading-snug">
-                Campaigns that set the standard
-              </p>
-              <span
-                className="mt-4 inline-flex items-center justify-center w-9 h-9 rounded-full border border-border text-[10px] font-medium tracking-wider"
-                aria-hidden="true"
-              >
-                01
-              </span>
-            </motion.div>
           </div>
 
           {/* Sector tags — desktop only, under image */}
