@@ -3,16 +3,20 @@ import { FadeIn } from "@/components/motion/Motion";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
-const reassurances = ["No spam", "Human review", "Response in 2 weeks"];
+const reassurances = [
+  "Limited seats — founding batch",
+  "Reviewed personally",
+  "Response within two weeks",
+];
 
 export function RegistrationSection() {
   return (
-    <Section id="apply" ariaLabel="Application" background="cream">
+    <Section id="register" ariaLabel="Reserve your seat" background="cream">
       <SectionHeader
-        index="11"
-        eyebrow="Apply"
-        title="Your application begins here."
-        lead="No commitment required. It takes around five minutes, and every application is reviewed manually by our team."
+        index="04"
+        eyebrow="Reserve Your Seat"
+        title="Apply to the founding batch."
+        lead="This is the beginning. Tell us about yourself — it takes about five minutes, and every application is read by our team."
       />
 
       <FadeIn className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-12 md:mb-14">
@@ -21,7 +25,7 @@ export function RegistrationSection() {
             key={item}
             className="flex items-center gap-2 text-sm text-muted-foreground"
           >
-            <span className="w-1 h-1 rounded-full bg-foreground shrink-0" />
+            <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
             {item}
           </span>
         ))}

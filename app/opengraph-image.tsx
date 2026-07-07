@@ -17,20 +17,20 @@ export default function OgImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "80px",
-          backgroundColor: "#f5f3ee",
-          color: "#0c0c0c",
+          backgroundColor: "#f7f5f1",
+          color: "#111111",
         }}
       >
         <div
           style={{
             display: "flex",
-            fontSize: 28,
+            fontSize: 26,
             letterSpacing: "0.2em",
             textTransform: "uppercase",
-            color: "#7a7770",
+            color: "#b85c38",
           }}
         >
-          The Better Agency presents
+          Applications open · First batch 2026
         </div>
         <div
           style={{
@@ -66,7 +66,7 @@ export default function OgImage() {
             style={{
               display: "flex",
               fontSize: 32,
-              color: "#7a7770",
+              color: "#666666",
               maxWidth: 600,
               lineHeight: 1.4,
             }}
@@ -77,9 +77,9 @@ export default function OgImage() {
         <div
           style={{
             display: "flex",
-            width: 80,
+            width: 96,
             height: 6,
-            backgroundColor: "#0c0c0c",
+            backgroundColor: "#b85c38",
           }}
         />
       </div>

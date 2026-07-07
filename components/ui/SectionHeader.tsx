@@ -27,13 +27,11 @@ export function SectionHeader({
     <FadeIn className={cn("max-w-5xl mx-auto mb-8 md:mb-10", className)}>
       <div className="flex items-center gap-3 mb-5">
         <span
-          className={cn("h-px w-8 shrink-0", isLight ? "bg-white/20" : "bg-ink")}
+          className={cn("h-px w-8 shrink-0", isLight ? "bg-accent/60" : "bg-accent")}
           aria-hidden="true"
         />
         <p className={cn("section-eyebrow", isLight && "text-stone-light")}>
-          <span className={cn("font-medium", isLight ? "text-white" : "text-ink")}>
-            {index}
-          </span>
+          <span className="font-medium text-accent">{index}</span>
           <span className="mx-2 opacity-40" aria-hidden="true">
             /
           </span>

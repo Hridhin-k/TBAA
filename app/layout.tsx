@@ -22,7 +22,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = createMetadata();
 
 export const viewport: Viewport = {
-  themeColor: "#f5f3ee",
+  themeColor: "#f7f5f1",
   width: "device-width",
   initialScale: 1,
   colorScheme: "light",

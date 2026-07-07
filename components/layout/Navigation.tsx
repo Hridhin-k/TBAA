@@ -46,8 +46,8 @@ export function Navigation() {
         </ul>
 
         <div className="hidden lg:block">
-          <Button href="#apply" variant="primary" size="sm" magnetic>
-            Apply Now
+          <Button href="#register" variant="primary" size="sm" magnetic>
+            Reserve Your Seat
           </Button>
         </div>
 
@@ -100,8 +100,8 @@ export function Navigation() {
             </li>
           ))}
           <li className="pt-4">
-            <Button href="#apply" variant="primary" size="lg" onClick={() => setMenuOpen(false)}>
-              Apply Now
+            <Button href="#register" variant="primary" size="lg" onClick={() => setMenuOpen(false)}>
+              Reserve Your Seat
             </Button>
           </li>
         </ul>

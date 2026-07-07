@@ -39,6 +39,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
+const easeOut = [0.16, 1, 0.3, 1] as const;
+
 const slideVariants = {
   enter: (direction: number) => ({
     x: direction > 0 ? 48 : -48,
@@ -216,19 +218,40 @@ export function ApplicationJourney() {
       <motion.div
         initial={reducedMotion ? false : { opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-3xl border border-mist-dark bg-white p-8 text-center md:p-14 lg:p-16"
+        className="rounded-2xl border border-mist-dark bg-white p-8 text-center md:p-14 lg:p-16"
         role="status"
         aria-live="polite"
       >
-        <span className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-ink mb-8">
-          <Check className="w-9 h-9 text-white" aria-hidden="true" />
+        <span className="relative mx-auto mb-8 inline-flex items-center justify-center w-20 h-20">
+          {!reducedMotion && (
+            <motion.span
+              className="absolute inset-0 rounded-full border border-accent/40"
+              initial={{ scale: 0.6, opacity: 0.8 }}
+              animate={{ scale: 1.6, opacity: 0 }}
+              transition={{ duration: 1.4, repeat: Infinity, ease: "easeOut" }}
+            />
+          )}
+          <motion.span
+            className="relative inline-flex items-center justify-center w-20 h-20 rounded-full bg-accent"
+            initial={reducedMotion ? false : { scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: "spring", stiffness: 220, damping: 16 }}
+          >
+            <motion.span
+              initial={reducedMotion ? false : { scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.18, duration: 0.4, ease: easeOut }}
+            >
+              <Check className="w-9 h-9 text-white" aria-hidden="true" />
+            </motion.span>
+          </motion.span>
         </span>
         <h3 className="font-display text-3xl md:text-4xl font-semibold tracking-tight mb-4">
-          Application received.
+          Your seat is reserved.
         </h3>
         <p className="text-stone leading-relaxed max-w-md mx-auto mb-3">
-          Thank you, {submittedName || "applicant"}. We&apos;ll review your
-          submission and be in touch within two weeks.
+          Thank you, {submittedName || "applicant"}. We&apos;ve received your
+          application and will be in touch within two weeks.
         </p>
         <p className="text-sm text-stone-light mb-10">
           Selected candidates will be invited for a conversation with our team.
@@ -291,9 +314,9 @@ export function ApplicationJourney() {
             <div className="mb-8 md:mb-10">
               {step === "intro" && (
                 <div className="flex items-center gap-3 mb-6">
-                  <span className="w-8 h-px bg-ink shrink-0" aria-hidden="true" />
-                  <p className="text-[11px] uppercase tracking-[0.28em] text-stone font-medium">
-                    Apply
+                  <span className="w-8 h-px bg-accent shrink-0" aria-hidden="true" />
+                  <p className="text-[11px] uppercase tracking-[0.28em] text-accent font-medium">
+                    Application
                   </p>
                 </div>
               )}
