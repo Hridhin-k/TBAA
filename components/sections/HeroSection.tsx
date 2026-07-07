@@ -8,7 +8,7 @@ import Image from "next/image";
 import { watchShowreel } from "@/utils/showreel";
 import { ArrowRight, Play } from "lucide-react";
 
-const headlineLines = ["The Better", "Academy"];
+const headlineLines = ["The", "Better", "Academy"];
 
 const meta = [
   { label: "Cohort", value: "Founding Batch" },

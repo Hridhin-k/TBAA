@@ -17,10 +17,11 @@ export function RegistrationSection() {
         eyebrow="Reserve Your Seat"
         title="Apply to the founding batch."
         lead="This is the beginning. Tell us about yourself — it takes about five minutes, and every application is read by our team."
-        className="mb-6 md:mb-8"
+        className="mb-5 md:mb-6"
+        size="md"
       />
 
-      <FadeIn className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-8">
+      <FadeIn className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 mb-6 text-sm">
         {reassurances.map((item) => (
           <span
             key={item}

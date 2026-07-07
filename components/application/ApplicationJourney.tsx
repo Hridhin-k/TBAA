@@ -311,20 +311,32 @@ export function ApplicationJourney() {
             transition={transition}
             className="flex-1 flex flex-col"
           >
-            <div className={cn("mb-5", step === "intro" && "mb-4 md:mb-5")}>
+            <div
+              className={cn(
+                "mb-4",
+                step === "intro" && "md:grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-8 md:items-end"
+              )}
+            >
               {step === "intro" && (
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-3 mb-3 md:mb-0 md:col-span-2">
                   <span className="w-8 h-px bg-accent shrink-0" aria-hidden="true" />
                   <p className="text-[11px] uppercase tracking-[0.28em] text-accent font-medium">
                     Application
                   </p>
                 </div>
               )}
-              <h3 className="font-display text-[clamp(1.375rem,2.5vw,1.875rem)] font-semibold tracking-tight leading-[1.1] text-balance">
-                {stepMeta.title}
-              </h3>
+              <div>
+                <h3 className="font-display text-[clamp(1.375rem,2.5vw,1.875rem)] font-semibold tracking-tight leading-[1.1] text-balance">
+                  {stepMeta.title}
+                </h3>
+              </div>
               {stepMeta.subtitle && (
-                <p className="mt-2 text-sm md:text-base text-stone leading-relaxed max-w-3xl">
+                <p
+                  className={cn(
+                    "text-sm md:text-base text-stone leading-relaxed",
+                    step === "intro" ? "md:text-right md:max-w-sm md:ml-auto" : "mt-2 max-w-3xl"
+                  )}
+                >
                   {stepMeta.subtitle}
                 </p>
               )}
@@ -332,24 +344,36 @@ export function ApplicationJourney() {
 
             <div className="flex-1 w-full">
               {step === "intro" && (
-                <ul
-                  className="grid gap-3 sm:grid-cols-3 sm:gap-4"
-                  role="list"
-                >
-                  {[
-                    "Seven short steps — about five minutes",
-                    "One question at a time, no long forms",
-                    "Review everything before you send",
-                  ].map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-2.5 text-sm text-stone leading-snug"
-                    >
-                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-ink shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                  <ul
+                    className="grid flex-1 gap-2 sm:grid-cols-3 sm:gap-4"
+                    role="list"
+                  >
+                    {[
+                      "Seven short steps — about five minutes",
+                      "One question at a time, no long forms",
+                      "Review everything before you send",
+                    ].map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-2.5 text-sm text-stone leading-snug"
+                      >
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-ink shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <Button
+                    variant="primary"
+                    size="md"
+                    magnetic
+                    onClick={() => goToStep("identity", 1)}
+                    className="shrink-0 gap-2 w-full sm:w-auto"
+                  >
+                    Begin application
+                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </Button>
+                </div>
               )}
 
               {step === "identity" && (
@@ -623,8 +647,8 @@ export function ApplicationJourney() {
             )}
 
             {/* Navigation */}
-            <div className="flex items-center justify-between gap-4 mt-6 pt-5 border-t border-mist-dark">
-              {step !== "intro" ? (
+            {step !== "intro" && (
+              <div className="flex items-center justify-between gap-4 mt-6 pt-5 border-t border-mist-dark">
                 <button
                   type="button"
                   onClick={handleBack}
@@ -633,56 +657,39 @@ export function ApplicationJourney() {
                   <ArrowLeft className="w-4 h-4" aria-hidden="true" />
                   Back
                 </button>
-              ) : (
-                <span />
-              )}
 
-              {step === "intro" && (
-                <Button
-                  variant="primary"
-                  size="md"
-                  magnetic
-                  onClick={() => goToStep("identity", 1)}
-                  className="ml-auto gap-2"
-                >
-                  Begin application
-                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                </Button>
-              )}
-
-              {step !== "intro" && step !== "review" && (
-                <Button
-                  variant="primary"
-                  size="md"
-                  magnetic
-                  onClick={() => void handleNext()}
-                  className="ml-auto gap-2"
-                >
-                  Continue
-                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                </Button>
-              )}
-
-              {step === "review" && (
-                <Button
-                  variant="primary"
-                  size="md"
-                  magnetic
-                  disabled={status === "loading"}
-                  onClick={() => void handleSubmit()}
-                  className="ml-auto min-w-[180px]"
-                >
-                  {status === "loading" ? (
-                    <span className="flex items-center gap-2">
-                      <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
-                      Sending...
-                    </span>
-                  ) : (
-                    "Submit application"
-                  )}
-                </Button>
-              )}
-            </div>
+                {step !== "review" ? (
+                  <Button
+                    variant="primary"
+                    size="md"
+                    magnetic
+                    onClick={() => void handleNext()}
+                    className="ml-auto gap-2"
+                  >
+                    Continue
+                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </Button>
+                ) : (
+                  <Button
+                    variant="primary"
+                    size="md"
+                    magnetic
+                    disabled={status === "loading"}
+                    onClick={() => void handleSubmit()}
+                    className="ml-auto min-w-[180px]"
+                  >
+                    {status === "loading" ? (
+                      <span className="flex items-center gap-2">
+                        <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
+                        Sending...
+                      </span>
+                    ) : (
+                      "Submit application"
+                    )}
+                  </Button>
+                )}
+              </div>
+            )}
           </motion.div>
         </AnimatePresence>
       </div>
