@@ -1,13 +1,32 @@
 import { siteConfig } from "@/lib/config";
 
 type JsonLdProps = {
-  type: "organization" | "course" | "breadcrumb";
+  type: "organization" | "course" | "breadcrumb" | "website";
 };
+
+const absolute = (path: string) =>
+  path.startsWith("http") ? path : `${siteConfig.url}${path}`;
 
 export function JsonLd({ type }: JsonLdProps) {
   let data: Record<string, unknown>;
 
   switch (type) {
+    case "website":
+      data = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: siteConfig.name,
+        url: siteConfig.url,
+        description: siteConfig.description,
+        inLanguage: siteConfig.locale.replace("_", "-"),
+        publisher: {
+          "@type": "EducationalOrganization",
+          name: siteConfig.organization.name,
+          url: siteConfig.url,
+        },
+      };
+      break;
+
     case "organization":
       data = {
         "@context": "https://schema.org",
@@ -16,6 +35,8 @@ export function JsonLd({ type }: JsonLdProps) {
         url: siteConfig.url,
         description: siteConfig.description,
         email: siteConfig.organization.email,
+        logo: absolute("/favicon.svg"),
+        image: absolute(siteConfig.ogImage),
         parentOrganization: {
           "@type": "Organization",
           name: siteConfig.organization.parentCompany,

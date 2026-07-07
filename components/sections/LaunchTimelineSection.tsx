@@ -27,8 +27,8 @@ export function LaunchTimelineSection() {
             {launchPhases.map((phase, index) => {
               const isOpen = phase.status === "open";
               return (
-                <FadeIn key={phase.step} delay={index * 0.12}>
-                  <li className="relative md:pr-8">
+                <li key={phase.step} className="relative md:pr-8">
+                  <FadeIn delay={index * 0.12}>
                     {/* Marker */}
                     <span
                       className={cn(
@@ -62,8 +62,8 @@ export function LaunchTimelineSection() {
                     <p className="text-sm text-muted-foreground leading-relaxed max-w-[32ch]">
                       {phase.description}
                     </p>
-                  </li>
-                </FadeIn>
+                  </FadeIn>
+                </li>
               );
             })}
           </ol>

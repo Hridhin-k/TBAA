@@ -311,30 +311,23 @@ export function ApplicationJourney() {
             transition={transition}
             className="flex-1 flex flex-col"
           >
-            <div
-              className={cn(
-                "mb-4",
-                step === "intro" && "md:grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-8 md:items-end"
-              )}
-            >
+            <div className={cn("mb-4", step === "intro" && "mb-7 md:mb-9")}>
               {step === "intro" && (
-                <div className="flex items-center gap-3 mb-3 md:mb-0 md:col-span-2">
+                <div className="flex items-center gap-3 mb-4">
                   <span className="w-8 h-px bg-accent shrink-0" aria-hidden="true" />
                   <p className="text-[11px] uppercase tracking-[0.28em] text-accent font-medium">
                     Application
                   </p>
                 </div>
               )}
-              <div>
-                <h3 className="font-display text-[clamp(1.375rem,2.5vw,1.875rem)] font-semibold tracking-tight leading-[1.1] text-balance">
-                  {stepMeta.title}
-                </h3>
-              </div>
+              <h3 className="font-display text-[clamp(1.5rem,2.6vw,2rem)] font-semibold tracking-tight leading-[1.1] text-balance">
+                {stepMeta.title}
+              </h3>
               {stepMeta.subtitle && (
                 <p
                   className={cn(
                     "text-sm md:text-base text-stone leading-relaxed",
-                    step === "intro" ? "md:text-right md:max-w-sm md:ml-auto" : "mt-2 max-w-3xl"
+                    step === "intro" ? "mt-4 max-w-xl" : "mt-2 max-w-3xl"
                   )}
                 >
                   {stepMeta.subtitle}
@@ -344,35 +337,39 @@ export function ApplicationJourney() {
 
             <div className="flex-1 w-full">
               {step === "intro" && (
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                <div>
                   <ul
-                    className="grid flex-1 gap-2 sm:grid-cols-3 sm:gap-4"
+                    className="grid gap-x-8 gap-y-6 border-t border-mist-dark pt-7 sm:grid-cols-3"
                     role="list"
                   >
                     {[
                       "Seven short steps — about five minutes",
                       "One question at a time, no long forms",
                       "Review everything before you send",
-                    ].map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-2.5 text-sm text-stone leading-snug"
-                      >
-                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-ink shrink-0" />
-                        {item}
+                    ].map((item, i) => (
+                      <li key={item} className="flex flex-col gap-2">
+                        <span className="font-display text-sm font-medium text-accent tabular-nums">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-sm text-stone leading-relaxed">
+                          {item}
+                        </span>
                       </li>
                     ))}
                   </ul>
-                  <Button
-                    variant="primary"
-                    size="md"
-                    magnetic
-                    onClick={() => goToStep("identity", 1)}
-                    className="shrink-0 gap-2 w-full sm:w-auto"
-                  >
-                    Begin application
-                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                  </Button>
+
+                  <div className="mt-8 border-t border-mist-dark pt-7">
+                    <Button
+                      variant="primary"
+                      size="md"
+                      magnetic
+                      onClick={() => goToStep("identity", 1)}
+                      className="gap-2 w-full sm:w-auto"
+                    >
+                      Begin application
+                      <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                    </Button>
+                  </div>
                 </div>
               )}
 
@@ -450,7 +447,7 @@ export function ApplicationJourney() {
                       <Input
                         id="age"
                         type="number"
-                        min={16}
+                        min={18}
                         max={65}
                         placeholder="Age"
                         aria-invalid={!!errors.age}
@@ -621,7 +618,27 @@ export function ApplicationJourney() {
                           >
                             I agree to be contacted by The Better Academy regarding my
                             application, and I understand that submitting does not guarantee
-                            admission.
+                            admission. I have read the{" "}
+                            <a
+                              href="/privacy"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="text-ink underline underline-offset-2 hover:text-accent"
+                            >
+                              Privacy Policy
+                            </a>{" "}
+                            and{" "}
+                            <a
+                              href="/terms"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="text-ink underline underline-offset-2 hover:text-accent"
+                            >
+                              Terms &amp; Conditions
+                            </a>
+                            .
                           </Label>
                         </div>
                         {errors.agreement?.message && (

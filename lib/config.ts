@@ -13,7 +13,7 @@ export const siteConfig = {
     parentUrl: "https://thebetteragency.in",
     email: "hello@thebetteracademy.com",
     address: {
-      city: "Kochi",
+      city: "Thrissur",
       region: "Kerala",
       country: "IN",
     },
@@ -28,5 +28,19 @@ export const siteConfig = {
     { label: "Academy", href: "#academy" },
     { label: "Timeline", href: "#timeline" },
     { label: "Reserve", href: "#register" },
+  ],
+  legal: {
+    // The legal entity operating the site. Replace with the registered
+    // company / firm name once confirmed with counsel.
+    entityName: "The Better Agency",
+    // Displayed as "Last updated" on the legal pages.
+    effectiveDate: "8 July 2026",
+    // DPDP Act, 2023 requires a published grievance contact.
+    grievanceEmail: "privacy@thebetteracademy.com",
+    grievanceOfficer: "Grievance Officer, The Better Academy",
+  },
+  legalPages: [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms & Conditions", href: "/terms" },
   ],
 } as const;

@@ -11,6 +11,7 @@ export default function HomePage() {
   return (
     <>
       <JsonLd type="organization" />
+      <JsonLd type="website" />
       <JsonLd type="course" />
       <JsonLd type="breadcrumb" />
 

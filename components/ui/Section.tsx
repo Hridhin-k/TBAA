@@ -34,7 +34,10 @@ export function Section({
       className={cn("relative isolate section-padding", bgMap[background], className)}
     >
       {decorated && (
-        <SectionDecor tone={background === "ink" ? "light" : "dark"} />
+        <SectionDecor
+          tone={background === "ink" ? "light" : "dark"}
+          seed={id ?? ariaLabel}
+        />
       )}
       <Container className={containerClassName}>{children}</Container>
     </section>

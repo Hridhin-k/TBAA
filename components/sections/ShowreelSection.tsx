@@ -1,8 +1,8 @@
 import { FadeIn } from "@/components/motion/Motion";
-import { CinematicVideoPlayer } from "@/components/ui/CinematicVideoPlayer";
+import { ReelsCarousel } from "@/components/ui/ReelsCarousel";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { siteMedia } from "@/lib/data/media";
+import { reels } from "@/lib/data/reels";
 
 export function ShowreelSection() {
   return (
@@ -10,7 +10,7 @@ export function ShowreelSection() {
       id="showreel"
       ariaLabel="Academy showreel"
       background="ink"
-      className="!py-0 scroll-mt-16"
+      className="!py-0"
       containerClassName="!px-0 !max-w-none"
       decorated={false}
     >
@@ -20,25 +20,19 @@ export function ShowreelSection() {
           eyebrow="Showreel"
           tone="light"
           title="See the standard of work we hold ourselves to."
+          lead="A stream of reels from The Better Agency — brand films, hospitality campaigns, fitness films, and fashion advertising. Drag, swipe, or just watch it drift."
         />
       </div>
 
       <FadeIn>
-        <CinematicVideoPlayer
-          youtubeId={siteMedia.showreel.youtubeId}
-          poster={siteMedia.showreel.poster}
-          title={siteMedia.showreel.title}
-          subtitle={siteMedia.showreel.subtitle}
-          aspectRatio="cinematic"
-        />
+        <ReelsCarousel reels={reels} />
       </FadeIn>
 
       <div className="container-editorial pt-8 md:pt-10 pb-12 md:pb-16">
         <FadeIn delay={0.1}>
-          <p className="mx-auto max-w-2xl text-center text-stone-light leading-relaxed">
-            Behind-the-scenes from real commercial shoots — brand films, hospitality
-            campaigns, fitness films, and fashion advertising. This is the craft you
-            will learn to deliver inside our academy.
+          <p className="max-w-2xl text-stone-light leading-relaxed">
+            This is the craft you will learn to deliver inside our academy — real
+            work, made for real brands.
           </p>
         </FadeIn>
       </div>

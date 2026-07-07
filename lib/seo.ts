@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/config";
 
-export function createMetadata(overrides?: Partial<Metadata>): Metadata {
-  const title = overrides?.title ?? siteConfig.name;
+type MetadataOverrides = Partial<Metadata> & { canonical?: string };
+
+export function createMetadata(overrides?: MetadataOverrides): Metadata {
+  const title = (overrides?.title as string) ?? siteConfig.name;
   const description = overrides?.description ?? siteConfig.description;
+  const canonical = overrides?.canonical ?? siteConfig.url;
+  const { canonical: _canonical, ...rest } = overrides ?? {};
 
   return {
     metadataBase: new URL(siteConfig.url),
@@ -26,18 +30,33 @@ export function createMetadata(overrides?: Partial<Metadata>): Metadata {
     authors: [{ name: siteConfig.organization.name, url: siteConfig.url }],
     creator: siteConfig.organization.name,
     publisher: siteConfig.organization.name,
+    category: "education",
+    applicationName: siteConfig.name,
+    manifest: "/manifest.webmanifest",
+    icons: {
+      icon: [
+        { url: "/favicon.svg", type: "image/svg+xml" },
+        { url: "/favicon.ico", sizes: "any" },
+      ],
+      apple: [{ url: "/apple-touch-icon.svg" }],
+    },
+    appleWebApp: {
+      capable: true,
+      title: siteConfig.shortName,
+      statusBarStyle: "default",
+    },
     formatDetection: {
       email: false,
       address: false,
       telephone: false,
     },
     alternates: {
-      canonical: siteConfig.url,
+      canonical,
     },
     openGraph: {
       type: "website",
       locale: siteConfig.locale,
-      url: siteConfig.url,
+      url: canonical,
       siteName: siteConfig.name,
       title,
       description,
@@ -67,6 +86,6 @@ export function createMetadata(overrides?: Partial<Metadata>): Metadata {
         "max-snippet": -1,
       },
     },
-    ...overrides,
+    ...rest,
   };
 }

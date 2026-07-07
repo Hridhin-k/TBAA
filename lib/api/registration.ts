@@ -1,6 +1,6 @@
 import emailjs from "@emailjs/browser";
 import type { RegistrationFormData } from "@/types";
-import { experienceOptions } from "@/lib/validation/registration";
+import { buildRegistrationEmailParams } from "@/lib/api/registration-email-params";
 
 export type RegistrationResponse = {
   success: boolean;
@@ -34,25 +34,7 @@ export async function submitRegistration(
     );
   }
 
-  const experienceLabel =
-    experienceOptions.find((o) => o.value === data.experience)?.label ??
-    data.experience;
-
-  const templateParams: Record<string, string> = {
-    full_name: data.fullName,
-    email: data.email,
-    phone: data.phone,
-    age: data.age,
-    city: data.city,
-    profession: data.profession,
-    experience: experienceLabel,
-    motivation: data.motivation,
-    portfolio_link: data.portfolioLink ?? "",
-    instagram: data.instagram ?? "",
-    linkedin: data.linkedin ?? "",
-    submitted_at: new Date().toLocaleString(),
-    source: "website",
-  };
+  const templateParams = buildRegistrationEmailParams(data);
 
   try {
     const response = await emailjs.send(

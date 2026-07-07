@@ -1,127 +1,186 @@
-<!--
-  THE BETTER ACADEMY — EmailJS "New Application" notification
-  ------------------------------------------------------------------
-  Ultra-minimal, text-forward notification (sent to your team inbox).
-
-  EmailJS → Email Templates → Create/Edit → paste this into the
-  "Content" tab (switch the editor to "Code"/HTML mode first).
-
-  Template settings (Settings tab):
-    To Email:    hello@thebetteracademy.com   (your inbox)
-    From Name:   The Better Academy
-    Reply To:    {{email}}                     (reply straight to the applicant)
-    Subject:     New application — {{full_name}} ({{experience}})
-
-  Variables (from lib/api/registration.ts):
-    {{full_name}} {{email}} {{phone}} {{age}} {{city}} {{profession}}
-    {{experience}} {{motivation}} {{portfolio_link}} {{instagram}}
-    {{linkedin}} {{submitted_at}} {{source}}
--->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="color-scheme" content="light" />
     <meta name="supported-color-schemes" content="light" />
-    <title>New application — {{full_name}}</title>
+    <title>New application</title>
+    <!--[if mso]>
+      <noscript>
+        <xml>
+          <o:OfficeDocumentSettings>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+          </o:OfficeDocumentSettings>
+        </xml>
+      </noscript>
+    <![endif]-->
     <style>
       @media only screen and (max-width: 600px) {
         .sm-full { width: 100% !important; }
         .sm-px { padding-left: 24px !important; padding-right: 24px !important; }
-        .sm-h1 { font-size: 26px !important; }
-        .sm-label { width: 84px !important; }
+        .sm-py { padding-top: 32px !important; padding-bottom: 32px !important; }
+        .sm-h1 { font-size: 28px !important; }
+        .sm-stack { display: block !important; width: 100% !important; }
+        .sm-label { font-size: 11px !important; padding-bottom: 2px !important; }
       }
-      a { color: #b85c38; text-decoration: none; }
+      a { text-decoration: none; }
     </style>
   </head>
-  <body style="margin:0; padding:0; background-color:#ffffff; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#111111; -webkit-font-smoothing:antialiased; -webkit-text-size-adjust:100%;">
+  <body style="margin:0; padding:0; background-color:#eeeae3; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#111111; -webkit-font-smoothing:antialiased; -webkit-text-size-adjust:100%;">
     <div style="display:none; max-height:0; overflow:hidden; opacity:0;">
-      {{full_name}} · {{city}} · {{experience}}
+      New application from {{full_name}} — {{profession}}, {{city}}. Reply to reach them directly.
     </div>
 
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eeeae3;">
       <tr>
-        <td align="center" class="sm-px" style="padding:56px 24px;">
-          <table role="presentation" width="560" cellpadding="0" cellspacing="0" class="sm-full" style="width:560px; max-width:560px;">
+        <td align="center" class="sm-px" style="padding:40px 16px;">
+          <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="sm-full" style="width:600px; max-width:600px;">
 
-            <!-- Eyebrow -->
+            <!-- Brand header band -->
             <tr>
-              <td style="padding:0 0 22px 0;">
-                <span style="display:inline-block; width:24px; height:2px; background-color:#b85c38; vertical-align:middle;"></span>
-                <span style="font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#b85c38; font-weight:600; vertical-align:middle; margin-left:12px;">
-                  New Application
-                </span>
+              <td style="background-color:#111111; border-radius:14px 14px 0 0; padding:28px 40px;" class="sm-px">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:17px; font-weight:700; letter-spacing:-0.01em; color:#ffffff;">
+                      Better<span style="color:#b85c38;">.</span>Academy
+                    </td>
+                    <td align="right" style="font-size:10px; letter-spacing:0.24em; text-transform:uppercase; color:#8f8b83; font-weight:600;">
+                      New Application
+                    </td>
+                  </tr>
+                </table>
               </td>
             </tr>
 
-            <!-- Name -->
+            <!-- Card body -->
             <tr>
-              <td class="sm-h1" style="font-size:34px; line-height:1.15; font-weight:700; letter-spacing:-0.02em; color:#111111; padding:0 0 10px 0;">
-                {{full_name}}
+              <td class="sm-px sm-py" style="background-color:#f7f5f1; padding:44px 40px;">
+
+                <!-- Applicant identity -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td style="padding:0 0 6px 0;">
+                      <span style="display:inline-block; width:24px; height:2px; background-color:#b85c38; vertical-align:middle;"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="sm-h1" style="font-size:36px; line-height:1.1; font-weight:700; letter-spacing:-0.03em; color:#111111; padding:10px 0 8px 0;">
+                      {{full_name}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-size:15px; color:#666666; padding:0 0 8px 0;">
+                      {{profession}} &nbsp;&middot;&nbsp; {{city}} &nbsp;&middot;&nbsp; {{experience}}
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Reply CTA -->
+                <table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0 8px 0;">
+                  <tr>
+                    <td style="border-radius:8px; background-color:#b85c38;">
+                      <a href="mailto:{{email}}?subject=Your%20application%20to%20The%20Better%20Academy" style="display:inline-block; padding:13px 26px; font-size:14px; font-weight:600; color:#ffffff; letter-spacing:0.01em;">
+                        Reply to {{full_name}} &rarr;
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Contact -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:24px;">
+                  <tr>
+                    <td style="border-top:1px solid #ddd7cc; padding-top:26px;">
+                      <p style="margin:0 0 16px 0; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:#a09a8e; font-weight:600;">Contact</p>
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td width="50%" class="sm-stack" style="vertical-align:top; padding:0 12px 16px 0;">
+                            <p class="sm-label" style="margin:0 0 3px 0; font-size:12px; color:#8f8b83;">Email</p>
+                            <p style="margin:0; font-size:15px; color:#111111; word-break:break-all;"><a href="mailto:{{email}}" style="color:#9c4b2c;">{{email}}</a></p>
+                          </td>
+                          <td width="50%" class="sm-stack" style="vertical-align:top; padding:0 0 16px 0;">
+                            <p class="sm-label" style="margin:0 0 3px 0; font-size:12px; color:#8f8b83;">Phone</p>
+                            <p style="margin:0; font-size:15px; color:#111111;"><a href="tel:{{phone}}" style="color:#111111;">{{phone}}</a></p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td width="50%" class="sm-stack" style="vertical-align:top; padding:0 12px 0 0;">
+                            <p class="sm-label" style="margin:0 0 3px 0; font-size:12px; color:#8f8b83;">Age</p>
+                            <p style="margin:0; font-size:15px; color:#111111;">{{age}}</p>
+                          </td>
+                          <td width="50%" class="sm-stack" style="vertical-align:top; padding:0;">
+                            <p class="sm-label" style="margin:0 0 3px 0; font-size:12px; color:#8f8b83;">Experience</p>
+                            <p style="margin:0; font-size:15px; color:#111111;">{{experience}}</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Motivation -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:26px;">
+                  <tr>
+                    <td style="border-top:1px solid #ddd7cc; padding-top:26px;">
+                      <p style="margin:0 0 14px 0; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:#a09a8e; font-weight:600;">Why they want to join</p>
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td style="border-left:2px solid #b85c38; padding:2px 0 2px 18px;">
+                            <p style="margin:0; font-size:16px; line-height:1.75; color:#1e1e1e; white-space:pre-line;">{{motivation}}</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Work & links -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:26px;">
+                  <tr>
+                    <td style="border-top:1px solid #ddd7cc; padding-top:26px;">
+                      <p style="margin:0 0 16px 0; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:#a09a8e; font-weight:600;">Work &amp; links</p>
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td style="font-size:14px; color:#8f8b83; width:96px; vertical-align:top; padding:6px 0;">Portfolio</td>
+                          <td style="font-size:15px; padding:6px 0; word-break:break-all;"><a href="{{portfolio_link}}" style="color:#9c4b2c;">{{portfolio_link}}</a></td>
+                        </tr>
+                        <tr>
+                          <td style="font-size:14px; color:#8f8b83; vertical-align:top; padding:6px 0;">Instagram</td>
+                          <td style="font-size:15px; color:#111111; padding:6px 0;">{{instagram}}</td>
+                        </tr>
+                        <tr>
+                          <td style="font-size:14px; color:#8f8b83; vertical-align:top; padding:6px 0;">LinkedIn</td>
+                          <td style="font-size:15px; padding:6px 0; word-break:break-all;"><a href="{{linkedin}}" style="color:#9c4b2c;">{{linkedin}}</a></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+
               </td>
             </tr>
-            <tr>
-              <td style="font-size:15px; color:#666666; padding:0 0 40px 0;">
-                {{profession}} &nbsp;·&nbsp; {{city}} &nbsp;·&nbsp; {{experience}}
-              </td>
-            </tr>
-
-            <!-- Contact -->
-            <tr><td style="border-top:1px solid #ebe7de; padding-top:28px;">
-              <p style="margin:0 0 16px 0; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#a09a8e;">Contact</p>
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td class="sm-label" style="font-size:14px; color:#666666; width:110px; vertical-align:top; padding:6px 0;">Email</td>
-                  <td style="font-size:15px; color:#111111; padding:6px 0; word-break:break-all;"><a href="mailto:{{email}}">{{email}}</a></td>
-                </tr>
-                <tr>
-                  <td class="sm-label" style="font-size:14px; color:#666666; vertical-align:top; padding:6px 0;">Phone</td>
-                  <td style="font-size:15px; color:#111111; padding:6px 0;"><a href="tel:{{phone}}" style="color:#111111;">{{phone}}</a></td>
-                </tr>
-                <tr>
-                  <td class="sm-label" style="font-size:14px; color:#666666; vertical-align:top; padding:6px 0;">Age</td>
-                  <td style="font-size:15px; color:#111111; padding:6px 0;">{{age}}</td>
-                </tr>
-              </table>
-            </td></tr>
-
-            <!-- Motivation -->
-            <tr><td style="border-top:1px solid #ebe7de; padding-top:28px; padding-bottom:0;">
-              <p style="margin:0 0 14px 0; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#a09a8e;">Why they want to join</p>
-              <p style="margin:0 0 32px 0; font-size:16px; line-height:1.75; color:#1e1e1e; white-space:pre-line;">{{motivation}}</p>
-            </td></tr>
-
-            <!-- Work & links -->
-            <tr><td style="border-top:1px solid #ebe7de; padding-top:28px;">
-              <p style="margin:0 0 16px 0; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#a09a8e;">Work &amp; links</p>
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-                {{#if portfolio_link}}
-                <tr>
-                  <td class="sm-label" style="font-size:14px; color:#666666; width:110px; vertical-align:top; padding:6px 0;">Portfolio</td>
-                  <td style="font-size:15px; padding:6px 0; word-break:break-all;"><a href="{{portfolio_link}}">{{portfolio_link}}</a></td>
-                </tr>
-                {{/if}}
-                <tr>
-                  <td class="sm-label" style="font-size:14px; color:#666666; vertical-align:top; padding:6px 0;">Instagram</td>
-                  <td style="font-size:15px; color:#111111; padding:6px 0;">{{instagram}}</td>
-                </tr>
-                <tr>
-                  <td class="sm-label" style="font-size:14px; color:#666666; vertical-align:top; padding:6px 0;">LinkedIn</td>
-                  <td style="font-size:15px; padding:6px 0; word-break:break-all;"><a href="{{linkedin}}">{{linkedin}}</a></td>
-                </tr>
-              </table>
-            </td></tr>
 
             <!-- Footer -->
-            <tr><td style="border-top:1px solid #ebe7de; padding-top:28px; padding-bottom:0;">
-              <p style="margin:0 0 6px 0; font-size:14px; color:#666666;">
-                Reply to this email to reach {{full_name}} directly.
-              </p>
-              <p style="margin:0; font-size:12px; color:#a09a8e;">
-                Submitted {{submitted_at}} · via {{source}} · The Better Academy
-              </p>
-            </td></tr>
+            <tr>
+              <td class="sm-px" style="background-color:#f7f5f1; border-radius:0 0 14px 14px; border-top:1px solid #ddd7cc; padding:22px 40px 26px 40px;">
+                <p style="margin:0 0 4px 0; font-size:13px; color:#666666;">
+                  Reply to this email to reach {{full_name}} directly.
+                </p>
+                <p style="margin:0; font-size:11px; color:#a09a8e;">
+                  Submitted {{submitted_at}} &middot; via {{source}}
+                </p>
+              </td>
+            </tr>
+
+            <!-- Sub-footer -->
+            <tr>
+              <td align="center" style="padding:22px 24px 4px 24px;">
+                <p style="margin:0; font-size:11px; letter-spacing:0.04em; color:#8f8b83;">
+                  The Better Academy &mdash; a venture from The Better Agency &middot; Thrissur, India
+                </p>
+              </td>
+            </tr>
 
           </table>
         </td>
