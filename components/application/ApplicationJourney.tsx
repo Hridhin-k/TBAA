@@ -15,7 +15,7 @@ import {
   type ApplicationStepId,
   type RegistrationSchema,
 } from "@/lib/validation/registration";
-import { omit } from "@/utils/cn";
+import { omit, cn } from "@/utils/cn";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { Button } from "@/components/ui/Button";
 import { FloatingField } from "@/components/ui/FloatingField";
@@ -218,11 +218,11 @@ export function ApplicationJourney() {
       <motion.div
         initial={reducedMotion ? false : { opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-2xl border border-mist-dark bg-white p-8 text-center md:p-14 lg:p-16"
+        className="rounded-2xl border border-mist-dark bg-white p-6 text-center md:p-10"
         role="status"
         aria-live="polite"
       >
-        <span className="relative mx-auto mb-8 inline-flex items-center justify-center w-20 h-20">
+        <span className="relative mx-auto mb-6 inline-flex items-center justify-center w-16 h-16">
           {!reducedMotion && (
             <motion.span
               className="absolute inset-0 rounded-full border border-accent/40"
@@ -232,7 +232,7 @@ export function ApplicationJourney() {
             />
           )}
           <motion.span
-            className="relative inline-flex items-center justify-center w-20 h-20 rounded-full bg-accent"
+            className="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent"
             initial={reducedMotion ? false : { scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 220, damping: 16 }}
@@ -246,14 +246,14 @@ export function ApplicationJourney() {
             </motion.span>
           </motion.span>
         </span>
-        <h3 className="font-display text-3xl md:text-4xl font-semibold tracking-tight mb-4">
+        <h3 className="font-display text-2xl md:text-3xl font-semibold tracking-tight mb-3">
           Your seat is reserved.
         </h3>
         <p className="text-stone leading-relaxed max-w-md mx-auto mb-3">
           Thank you, {submittedName || "applicant"}. We&apos;ve received your
           application and will be in touch within two weeks.
         </p>
-        <p className="text-sm text-stone-light mb-10">
+        <p className="text-sm text-stone-light mb-8">
           Selected candidates will be invited for a conversation with our team.
         </p>
         <Button
@@ -272,11 +272,11 @@ export function ApplicationJourney() {
   }
 
   return (
-    <div className="overflow-hidden rounded-3xl border border-mist-dark bg-white">
+    <div className="overflow-hidden rounded-2xl border border-mist-dark bg-white">
       {/* Progress header */}
       {step !== "intro" && (
-        <div className="px-6 md:px-10 pt-8 md:pt-10 pb-6 border-b border-mist-dark">
-          <div className="flex items-center justify-between gap-4 mb-4">
+        <div className="px-5 md:px-8 pt-5 pb-4 border-b border-mist-dark">
+          <div className="flex items-center justify-between gap-4 mb-3">
             <p className="text-[11px] uppercase tracking-[0.22em] text-stone">
               Step {stepIndex} of {journeySteps.length - 1}
               <span className="mx-2 text-mist-dark" aria-hidden="true">
@@ -290,7 +290,7 @@ export function ApplicationJourney() {
         </div>
       )}
 
-      <div ref={panelRef} className="px-6 md:px-10 lg:px-14 py-10 md:py-14 min-h-[420px] flex flex-col">
+      <div ref={panelRef} className="px-5 md:px-8 py-6 md:py-8 flex flex-col">
         <input
           type="text"
           tabIndex={-1}
@@ -311,33 +311,41 @@ export function ApplicationJourney() {
             transition={transition}
             className="flex-1 flex flex-col"
           >
-            <div className="mb-8 md:mb-10">
+            <div className={cn("mb-5", step === "intro" && "mb-4 md:mb-5")}>
               {step === "intro" && (
-                <div className="flex items-center gap-3 mb-6">
+                <div className="flex items-center gap-3 mb-4">
                   <span className="w-8 h-px bg-accent shrink-0" aria-hidden="true" />
                   <p className="text-[11px] uppercase tracking-[0.28em] text-accent font-medium">
                     Application
                   </p>
                 </div>
               )}
-              <h3 className="font-display text-[clamp(1.75rem,4vw,2.75rem)] font-semibold tracking-tight leading-[1.05] text-balance max-w-2xl">
+              <h3 className="font-display text-[clamp(1.375rem,2.5vw,1.875rem)] font-semibold tracking-tight leading-[1.1] text-balance">
                 {stepMeta.title}
               </h3>
               {stepMeta.subtitle && (
-                <p className="mt-4 text-stone leading-relaxed max-w-xl">{stepMeta.subtitle}</p>
+                <p className="mt-2 text-sm md:text-base text-stone leading-relaxed max-w-3xl">
+                  {stepMeta.subtitle}
+                </p>
               )}
             </div>
 
-            <div className="flex-1 max-w-2xl">
+            <div className="flex-1 w-full">
               {step === "intro" && (
-                <ul className="space-y-4 mb-10" role="list">
+                <ul
+                  className="grid gap-3 sm:grid-cols-3 sm:gap-4"
+                  role="list"
+                >
                   {[
                     "Seven short steps — about five minutes",
                     "One question at a time, no long forms",
                     "Review everything before you send",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-stone">
-                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-ink shrink-0" />
+                    <li
+                      key={item}
+                      className="flex items-start gap-2.5 text-sm text-stone leading-snug"
+                    >
+                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-ink shrink-0" />
                       {item}
                     </li>
                   ))}
@@ -356,7 +364,7 @@ export function ApplicationJourney() {
                     autoComplete="name"
                     placeholder="Your full name"
                     aria-invalid={!!errors.fullName}
-                    className="text-xl md:text-2xl font-display font-medium tracking-tight h-auto py-4"
+                    className="text-lg md:text-xl font-display font-medium tracking-tight h-auto py-2.5"
                     {...register("fullName")}
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
@@ -369,7 +377,7 @@ export function ApplicationJourney() {
               )}
 
               {step === "contact" && (
-                <div className="space-y-8">
+                <div className="grid md:grid-cols-2 gap-5 md:gap-6">
                   <FloatingField id="email" label="Email" error={errors.email?.message} large>
                     <Input
                       id="email"
@@ -377,7 +385,7 @@ export function ApplicationJourney() {
                       autoComplete="email"
                       placeholder="Email address"
                       aria-invalid={!!errors.email}
-                      className="text-xl md:text-2xl font-display font-medium tracking-tight h-auto py-4"
+                      className="text-lg md:text-xl font-display font-medium tracking-tight h-auto py-2.5"
                       {...register("email")}
                     />
                   </FloatingField>
@@ -388,7 +396,7 @@ export function ApplicationJourney() {
                       autoComplete="tel"
                       placeholder="Phone number"
                       aria-invalid={!!errors.phone}
-                      className="text-xl md:text-2xl font-display font-medium tracking-tight h-auto py-4"
+                      className="text-lg md:text-xl font-display font-medium tracking-tight h-auto py-2.5"
                       {...register("phone")}
                       onKeyDown={(e) => {
                         if (e.key === "Enter") {
@@ -402,18 +410,18 @@ export function ApplicationJourney() {
               )}
 
               {step === "background" && (
-                <div className="space-y-8">
+                <div className="space-y-5">
                   <FloatingField id="city" label="City" error={errors.city?.message} large>
                     <Input
                       id="city"
                       autoComplete="address-level2"
                       placeholder="City"
                       aria-invalid={!!errors.city}
-                      className="text-xl md:text-2xl font-display font-medium tracking-tight h-auto py-4"
+                      className="text-lg md:text-xl font-display font-medium tracking-tight h-auto py-2.5"
                       {...register("city")}
                     />
                   </FloatingField>
-                  <div className="grid sm:grid-cols-2 gap-8">
+                  <div className="grid sm:grid-cols-2 gap-5 md:gap-6">
                     <FloatingField id="age" label="Age" error={errors.age?.message} large>
                       <Input
                         id="age"
@@ -422,7 +430,7 @@ export function ApplicationJourney() {
                         max={65}
                         placeholder="Age"
                         aria-invalid={!!errors.age}
-                        className="text-xl md:text-2xl font-display font-medium tracking-tight h-auto py-4"
+                        className="text-lg md:text-xl font-display font-medium tracking-tight h-auto py-2.5"
                         {...register("age")}
                       />
                     </FloatingField>
@@ -436,7 +444,7 @@ export function ApplicationJourney() {
                         id="profession"
                         placeholder="Current profession"
                         aria-invalid={!!errors.profession}
-                        className="text-xl md:text-2xl font-display font-medium tracking-tight h-auto py-4"
+                        className="text-lg md:text-xl font-display font-medium tracking-tight h-auto py-2.5"
                         {...register("profession")}
                         onKeyDown={(e) => {
                           if (e.key === "Enter") {
@@ -486,7 +494,7 @@ export function ApplicationJourney() {
                           id="motivation"
                           placeholder="Tell us about your creative journey, what you've tried, and what you're hoping to build..."
                           aria-invalid={!!errors.motivation}
-                          className="min-h-[220px] text-base md:text-lg"
+                          className="min-h-[120px] md:min-h-[140px] text-base"
                           {...field}
                         />
                         <p className="text-xs text-muted-foreground tabular-nums text-right mt-2">
@@ -499,11 +507,12 @@ export function ApplicationJourney() {
               )}
 
               {step === "work" && (
-                <div className="space-y-8">
+                <div className="grid md:grid-cols-2 gap-5 md:gap-6">
                   <FloatingField
                     id="portfolioLink"
                     label="Portfolio link (optional)"
                     error={errors.portfolioLink?.message}
+                    className="md:col-span-2"
                   >
                     <Input
                       id="portfolioLink"
@@ -544,12 +553,12 @@ export function ApplicationJourney() {
               )}
 
               {step === "review" && (
-                <div className="space-y-8">
-                  <ul className="divide-y divide-mist-dark border-t border-mist-dark" role="list">
+                <div className="space-y-5">
+                  <ul className="grid sm:grid-cols-2 gap-x-8 border-t border-mist-dark" role="list">
                     {reviewItems.map((item) => (
                       <li
                         key={item.label}
-                        className="flex items-start justify-between gap-4 py-4 group"
+                        className="flex items-start justify-between gap-3 py-3 border-b border-mist-dark group"
                       >
                         <div className="min-w-0">
                           <p className="text-[10px] uppercase tracking-[0.2em] text-stone mb-1">
@@ -614,7 +623,7 @@ export function ApplicationJourney() {
             )}
 
             {/* Navigation */}
-            <div className="flex items-center justify-between gap-4 mt-10 md:mt-14 pt-8 border-t border-mist-dark">
+            <div className="flex items-center justify-between gap-4 mt-6 pt-5 border-t border-mist-dark">
               {step !== "intro" ? (
                 <button
                   type="button"
@@ -631,7 +640,7 @@ export function ApplicationJourney() {
               {step === "intro" && (
                 <Button
                   variant="primary"
-                  size="lg"
+                  size="md"
                   magnetic
                   onClick={() => goToStep("identity", 1)}
                   className="ml-auto gap-2"
@@ -644,7 +653,7 @@ export function ApplicationJourney() {
               {step !== "intro" && step !== "review" && (
                 <Button
                   variant="primary"
-                  size="lg"
+                  size="md"
                   magnetic
                   onClick={() => void handleNext()}
                   className="ml-auto gap-2"
@@ -657,11 +666,11 @@ export function ApplicationJourney() {
               {step === "review" && (
                 <Button
                   variant="primary"
-                  size="lg"
+                  size="md"
                   magnetic
                   disabled={status === "loading"}
                   onClick={() => void handleSubmit()}
-                  className="ml-auto min-w-[200px]"
+                  className="ml-auto min-w-[180px]"
                 >
                   {status === "loading" ? (
                     <span className="flex items-center gap-2">

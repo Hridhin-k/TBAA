@@ -14,7 +14,7 @@ export function ExperiencePicker({ value, onChange, error }: ExperiencePickerPro
   return (
     <div>
       <div
-        className="grid grid-cols-1 sm:grid-cols-2 gap-3"
+        className="grid grid-cols-2 lg:grid-cols-5 gap-2.5 md:gap-3"
         role="radiogroup"
         aria-label="Experience level"
         aria-invalid={error ? true : undefined}
@@ -31,7 +31,7 @@ export function ExperiencePicker({ value, onChange, error }: ExperiencePickerPro
               aria-checked={selected}
               onClick={() => onChange(option.value)}
               className={cn(
-                "relative flex items-center justify-between gap-3 rounded-2xl p-5 text-left",
+                "relative flex items-center justify-between gap-2 rounded-xl px-3.5 py-3 text-left",
                 "border transition-all duration-300",
                 selected
                   ? "border-ink bg-ink text-white"
@@ -40,15 +40,15 @@ export function ExperiencePicker({ value, onChange, error }: ExperiencePickerPro
             >
               <span
                 className={cn(
-                  "font-display text-lg font-semibold tracking-tight",
+                  "font-display text-sm md:text-base font-semibold tracking-tight leading-tight",
                   selected ? "text-white" : "text-ink"
                 )}
               >
                 {option.label}
               </span>
               {selected && (
-                <span className="flex items-center justify-center w-7 h-7 rounded-full bg-white text-ink shrink-0">
-                  <Check className="w-4 h-4" aria-hidden="true" />
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white text-ink shrink-0">
+                  <Check className="w-3.5 h-3.5" aria-hidden="true" />
                 </span>
               )}
             </button>

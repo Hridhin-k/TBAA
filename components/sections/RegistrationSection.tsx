@@ -17,9 +17,10 @@ export function RegistrationSection() {
         eyebrow="Reserve Your Seat"
         title="Apply to the founding batch."
         lead="This is the beginning. Tell us about yourself — it takes about five minutes, and every application is read by our team."
+        className="mb-6 md:mb-8"
       />
 
-      <FadeIn className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-12 md:mb-14">
+      <FadeIn className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-8">
         {reassurances.map((item) => (
           <span
             key={item}
@@ -31,7 +32,7 @@ export function RegistrationSection() {
         ))}
       </FadeIn>
 
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <FadeIn delay={0.1}>
           <ApplicationJourney />
         </FadeIn>
