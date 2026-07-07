@@ -1,0 +1,114 @@
+<!--
+  THE BETTER ACADEMY — EmailJS applicant auto-reply (OPTIONAL)
+  ------------------------------------------------------------------
+  A confirmation email sent TO THE APPLICANT after they apply.
+
+  This is optional. To enable it you need a SECOND EmailJS template
+  and a second send call. Two ways:
+
+  A) EmailJS "Auto-Reply" (simplest, no code change)
+     In the notification template's Settings, enable Auto-Reply and
+     paste this HTML there. Set its "To Email" to {{email}}.
+
+  B) Separate template + second send (more control)
+     Create a new template with this HTML, then in
+     lib/api/registration.ts send it too, e.g.:
+
+       await emailjs.send(SERVICE_ID, AUTOREPLY_TEMPLATE_ID,
+         templateParams, { publicKey: PUBLIC_KEY });
+
+     with NEXT_PUBLIC_EMAILJS_AUTOREPLY_TEMPLATE_ID in your env.
+
+  Template settings:
+    To Email:  {{email}}
+    From Name: The Better Academy
+    Reply To:  hello@thebetteracademy.com
+    Subject:   Your seat is reserved — The Better Academy
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>Your seat is reserved</title>
+  </head>
+  <body style="margin:0; padding:0; background-color:#eeeae3; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#111111; -webkit-font-smoothing:antialiased;">
+    <div style="display:none; max-height:0; overflow:hidden; opacity:0;">
+      Thank you, {{full_name}} — we've received your application to the founding batch.
+    </div>
+
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eeeae3; padding:32px 16px;">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#f7f5f1; border:1px solid #ddd7cc; border-radius:8px; overflow:hidden;">
+
+            <!-- Header -->
+            <tr>
+              <td style="padding:44px 44px 8px 44px;">
+                <p style="margin:0 0 18px 0; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:#b85c38; font-weight:600;">
+                  The Better Academy
+                </p>
+                <h1 style="margin:0; font-size:30px; line-height:1.15; font-weight:700; letter-spacing:-0.02em; color:#111111;">
+                  Your seat is reserved.
+                </h1>
+              </td>
+            </tr>
+
+            <!-- Body -->
+            <tr>
+              <td style="padding:24px 44px 8px 44px;">
+                <p style="margin:0 0 18px 0; font-size:16px; line-height:1.7; color:#1e1e1e;">
+                  Hi {{full_name}},
+                </p>
+                <p style="margin:0 0 18px 0; font-size:16px; line-height:1.7; color:#1e1e1e;">
+                  Thank you for applying to the founding batch of The Better Academy.
+                  We&rsquo;ve received your application and every one is read personally
+                  by our team.
+                </p>
+                <p style="margin:0 0 18px 0; font-size:16px; line-height:1.7; color:#1e1e1e;">
+                  If your application moves forward, we&rsquo;ll be in touch within
+                  <strong>two weeks</strong> to invite you for a short conversation.
+                </p>
+              </td>
+            </tr>
+
+            <!-- Recap card -->
+            <tr>
+              <td style="padding:12px 44px 8px 44px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eeeae3; border-radius:6px;">
+                  <tr>
+                    <td style="padding:20px 24px;">
+                      <p style="margin:0 0 10px 0; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#8f8b83;">
+                        Application summary
+                      </p>
+                      <p style="margin:0; font-size:14px; line-height:1.6; color:#111111;">
+                        {{full_name}} &middot; {{city}}<br />
+                        {{profession}} &middot; {{experience}}<br />
+                        Submitted {{submitted_at}}
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td style="padding:28px 44px 40px 44px;">
+                <div style="height:1px; background-color:#ddd7cc; margin-bottom:20px;"></div>
+                <p style="margin:0 0 4px 0; font-size:13px; color:#666666;">
+                  Questions? Just reply to this email.
+                </p>
+                <p style="margin:0; font-size:12px; color:#8f8b83;">
+                  The Better Academy &mdash; a venture from The Better Agency &middot; Kochi, India
+                </p>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

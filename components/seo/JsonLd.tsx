@@ -1,8 +1,7 @@
 import { siteConfig } from "@/lib/config";
-import { faqItems } from "@/lib/data/content";
 
 type JsonLdProps = {
-  type: "organization" | "course" | "faq" | "breadcrumb";
+  type: "organization" | "course" | "breadcrumb";
 };
 
 export function JsonLd({ type }: JsonLdProps) {
@@ -64,21 +63,6 @@ export function JsonLd({ type }: JsonLdProps) {
             name: siteConfig.organization.address.city,
           },
         },
-      };
-      break;
-
-    case "faq":
-      data = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: faqItems.map((item) => ({
-          "@type": "Question",
-          name: item.question,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: item.answer,
-          },
-        })),
       };
       break;
 

@@ -25,11 +25,8 @@ export const siteConfig = {
   },
   nav: [
     { label: "Showreel", href: "#showreel" },
-    { label: "About", href: "#about" },
-    { label: "Experience", href: "#experience" },
-    { label: "Portfolio", href: "#portfolio" },
-    { label: "Journey", href: "#journey" },
-    { label: "FAQ", href: "#faq" },
-    { label: "Apply", href: "#apply" },
+    { label: "Academy", href: "#academy" },
+    { label: "Timeline", href: "#timeline" },
+    { label: "Reserve", href: "#register" },
   ],
 } as const;
