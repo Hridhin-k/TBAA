@@ -12,7 +12,9 @@ export function ShowreelSection() {
       background="ink"
       className="!py-0"
       containerClassName="!px-0 !max-w-none"
-      decorated={false}
+      decorated
+      decorVariant="showreel"
+      decorDensity="dense"
     >
       <div className="container-editorial pt-12 md:pt-16 pb-8 md:pb-10">
         <SectionHeader

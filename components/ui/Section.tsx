@@ -10,6 +10,9 @@ type SectionProps = {
   ariaLabel?: string;
   background?: "cream" | "white" | "ink";
   decorated?: boolean;
+  decorVariant?: "default" | "showreel";
+  decorVisibility?: "md" | "lg";
+  decorDensity?: "default" | "dense";
 };
 
 const bgMap = {
@@ -26,6 +29,9 @@ export function Section({
   ariaLabel,
   background = "cream",
   decorated = true,
+  decorVariant = "default",
+  decorVisibility = "md",
+  decorDensity = "default",
 }: SectionProps) {
   return (
     <section
@@ -37,6 +43,9 @@ export function Section({
         <SectionDecor
           tone={background === "ink" ? "light" : "dark"}
           seed={id ?? ariaLabel}
+          variant={decorVariant}
+          visibility={decorVisibility}
+          density={decorDensity}
         />
       )}
       <Container className={containerClassName}>{children}</Container>

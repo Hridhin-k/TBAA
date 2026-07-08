@@ -5,7 +5,7 @@ import { academyFeatures } from "@/lib/data/launch";
 
 export function AcademySection() {
   return (
-    <Section id="academy" ariaLabel="The Academy" background="cream">
+    <Section id="academy" ariaLabel="The Academy" background="cream" decorDensity="dense">
       <SectionHeader
         index="02"
         eyebrow="The Academy"

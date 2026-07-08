@@ -24,6 +24,107 @@
   animation: accordion-up 0.3s ease-out;
 }
 
+@keyframes decor-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes decor-drift {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(6px) translateY(-4px);
+  }
+}
+
+@keyframes decor-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes decor-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes decor-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateX(50%) scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: translateX(50%) scale(1.08);
+  }
+}
+
+@utility animate-decor-float {
+  animation: decor-float 7s ease-in-out infinite;
+}
+
+@utility animate-decor-drift {
+  animation: decor-drift 9s ease-in-out infinite;
+}
+
+@utility animate-decor-spin {
+  animation: decor-spin 28s linear infinite;
+}
+
+@utility animate-decor-pulse {
+  animation: decor-pulse 4s ease-in-out infinite;
+}
+
+@utility animate-decor-glow {
+  animation: decor-glow 8s ease-in-out infinite;
+}
+
+@utility animation-delay-0 {
+  animation-delay: 0ms;
+}
+
+@utility animation-delay-700 {
+  animation-delay: 700ms;
+}
+
+@utility animation-delay-1400 {
+  animation-delay: 1400ms;
+}
+
+@utility animation-delay-2100 {
+  animation-delay: 2100ms;
+}
+
+@utility animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+@utility animation-delay-3000 {
+  animation-delay: 3000ms;
+}
+
+@utility animation-delay-4000 {
+  animation-delay: 4000ms;
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;

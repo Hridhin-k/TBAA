@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
+import { HeroDecor } from "@/components/ui/HeroDecor";
 import { siteMedia } from "@/lib/data/media";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { motion } from "framer-motion";
@@ -47,6 +48,7 @@ export function HeroSection() {
       aria-label="Introduction"
       className="relative bg-cream overflow-hidden"
     >
+      <HeroDecor />
       <div className="container-editorial flex flex-col lg:grid lg:grid-cols-12 lg:gap-x-8 lg:min-h-[100dvh]">
         {/* ——— Content column (dissolves into the flow on mobile) ——— */}
         <div className="contents lg:z-10 lg:col-span-5 xl:col-span-5 lg:flex lg:flex-col lg:justify-between lg:pt-32 lg:pb-12 lg:min-h-[100dvh]">
@@ -182,7 +184,7 @@ export function HeroSection() {
         {/* ——— Visual column ——— */}
         <div className="order-2 lg:order-none lg:col-span-7 xl:col-span-7 relative mt-8 lg:mt-0 lg:min-h-[100dvh] flex flex-col items-center lg:items-stretch justify-center pb-8 lg:pb-0 lg:py-16">
           <div className="relative w-full mx-auto">
-            <div className="relative aspect-[4/5] sm:aspect-[16/11] lg:aspect-auto max-h-[58vh] sm:max-h-none lg:max-h-none lg:min-h-[72vh] xl:min-h-[75vh] overflow-hidden rounded-xl lg:rounded-2xl bg-mist">
+            <div className="relative aspect-[4/5] sm:aspect-[16/11] lg:aspect-auto max-h-[58vh] sm:max-h-none lg:max-h-none lg:min-h-[80vh] xl:min-h-[70vh] overflow-hidden rounded-xl lg:rounded-2xl bg-mist">
               <Image
                 src={siteMedia.hero.primary}
                 alt={siteMedia.hero.alt}
