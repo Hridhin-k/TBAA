@@ -182,7 +182,7 @@ export function HeroSection() {
         {/* ——— Visual column ——— */}
         <div className="order-2 lg:order-none lg:col-span-7 xl:col-span-7 relative mt-8 lg:mt-0 lg:min-h-[100dvh] flex flex-col items-center lg:items-stretch justify-center pb-8 lg:pb-0 lg:py-16">
           <div className="relative w-full mx-auto">
-            <div className="relative aspect-[4/5] sm:aspect-[16/11] lg:aspect-auto max-h-[58vh] sm:max-h-none lg:max-h-none lg:min-h-[80vh] xl:min-h-[85vh] overflow-hidden rounded-xl lg:rounded-2xl bg-mist">
+            <div className="relative aspect-[4/5] sm:aspect-[16/11] lg:aspect-auto max-h-[58vh] sm:max-h-none lg:max-h-none lg:min-h-[72vh] xl:min-h-[75vh] overflow-hidden rounded-xl lg:rounded-2xl bg-mist">
               <Image
                 src={siteMedia.hero.primary}
                 alt={siteMedia.hero.alt}
